@@ -2,7 +2,7 @@ package com.ruenzuo.weatherapp.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class City {
+public class Country {
 
     @SerializedName("countryName")
     private String name;

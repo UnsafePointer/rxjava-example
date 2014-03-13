@@ -1,15 +1,13 @@
 package com.ruenzuo.weatherapp.fragments;
 
 import android.app.Activity;
-import android.content.Context;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 
 import com.ruenzuo.weatherapp.R;
-import com.ruenzuo.weatherapp.adapters.CitiesAdapter;
+import com.ruenzuo.weatherapp.adapters.CountriesAdapter;
 import com.ruenzuo.weatherapp.managers.WeatherAPIManager;
-import com.ruenzuo.weatherapp.models.City;
+import com.ruenzuo.weatherapp.models.Country;
 
 import java.util.ArrayList;
 
@@ -19,12 +17,12 @@ import rx.android.observables.AndroidObservable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class CitiesListFragment extends ListFragment implements Observer<ArrayList<City>> {
+public class CountriesListFragment extends ListFragment implements Observer<ArrayList<Country>> {
 
     private Subscription subscription;
 
     public interface OnCitySelectedListener {
-        public void onCitySelected(City city);
+        public void onCitySelected(Country country);
     }
 
     public interface OnLoadCitiesListener {
@@ -56,7 +54,7 @@ public class CitiesListFragment extends ListFragment implements Observer<ArrayLi
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         loadCitiesListener.onBeginLoadCities();
-        CitiesAdapter adapter = new CitiesAdapter(getActivity(), R.layout.row_city);
+        CountriesAdapter adapter = new CountriesAdapter(getActivity(), R.layout.row_city);
         setListAdapter(adapter);
         subscription = AndroidObservable.fromFragment(this, WeatherAPIManager.INSTANCE.getCities())
                 .subscribeOn(Schedulers.newThread())
@@ -81,11 +79,11 @@ public class CitiesListFragment extends ListFragment implements Observer<ArrayLi
     }
 
     @Override
-    public void onNext(ArrayList<City> cities) {
-        CitiesAdapter citiesAdapter = (CitiesAdapter)getListAdapter();
-        citiesAdapter.clear();
-        citiesAdapter.addAll(cities);
-        citiesAdapter.notifyDataSetChanged();
+    public void onNext(ArrayList<Country> cities) {
+        CountriesAdapter countriesAdapter = (CountriesAdapter)getListAdapter();
+        countriesAdapter.clear();
+        countriesAdapter.addAll(cities);
+        countriesAdapter.notifyDataSetChanged();
     }
 
 }

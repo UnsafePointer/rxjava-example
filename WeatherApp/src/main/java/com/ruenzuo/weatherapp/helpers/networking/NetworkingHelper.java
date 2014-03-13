@@ -1,7 +1,5 @@
 package com.ruenzuo.weatherapp.helpers.networking;
 
-import com.ruenzuo.weatherapp.models.CitiesData;
-
 import retrofit.RestAdapter;
 
 public class NetworkingHelper {

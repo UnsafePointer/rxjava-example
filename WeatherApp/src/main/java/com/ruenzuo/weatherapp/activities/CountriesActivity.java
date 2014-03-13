@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.ruenzuo.weatherapp.R;
-import com.ruenzuo.weatherapp.fragments.CitiesListFragment;
-import com.ruenzuo.weatherapp.models.City;
+import com.ruenzuo.weatherapp.fragments.CountriesListFragment;
+import com.ruenzuo.weatherapp.models.Country;
 
 import uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout;
 import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
 import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
-public class CitiesActivity extends ActionBarActivity implements OnRefreshListener,
-        CitiesListFragment.OnCitySelectedListener, CitiesListFragment.OnLoadCitiesListener {
+public class CountriesActivity extends ActionBarActivity implements OnRefreshListener,
+        CountriesListFragment.OnCitySelectedListener, CountriesListFragment.OnLoadCitiesListener {
 
 
     private PullToRefreshLayout ptrLayout;
@@ -22,7 +22,7 @@ public class CitiesActivity extends ActionBarActivity implements OnRefreshListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cities);
-        setTitle("Cities");
+        setTitle("Countries");
         ptrLayout = (PullToRefreshLayout) findViewById(R.id.ptrLayout);
         ActionBarPullToRefresh.from(this)
                 .listener(this)
@@ -35,7 +35,7 @@ public class CitiesActivity extends ActionBarActivity implements OnRefreshListen
     }
 
     @Override
-    public void onCitySelected(City city) {
+    public void onCitySelected(Country country) {
 
     }
 

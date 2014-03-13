@@ -1,8 +1,9 @@
 package com.ruenzuo.weatherapp.managers;
 
 import com.ruenzuo.weatherapp.helpers.networking.NetworkingHelper;
-import com.ruenzuo.weatherapp.models.CitiesData;
-import com.ruenzuo.weatherapp.models.City;
+import com.ruenzuo.weatherapp.models.CountryData;
+import com.ruenzuo.weatherapp.models.Country;
+
 import java.util.ArrayList;
 import rx.Observable;
 import rx.Subscriber;
@@ -20,13 +21,13 @@ public enum WeatherAPIManager {
         return networkingHelper;
     }
 
-    public Observable<ArrayList<City>> getCities() {
-        return Observable.create(new Observable.OnSubscribe<ArrayList<City>>() {
+    public Observable<ArrayList<Country>> getCities() {
+        return Observable.create(new Observable.OnSubscribe<ArrayList<Country>>() {
             @Override
-            public void call(Subscriber<? super ArrayList<City>> subscriber) {
+            public void call(Subscriber<? super ArrayList<Country>> subscriber) {
                 try {
-                    CitiesData citiesData = getNetworkingHelper().getService().getCities("WeatherApp");
-                    subscriber.onNext(citiesData.getCities());
+                    CountryData countryData = getNetworkingHelper().getService().getCities("WeatherApp");
+                    subscriber.onNext(countryData.getCities());
                     subscriber.onCompleted();
                 } catch (Exception ex) {
                     subscriber.onError(ex);
