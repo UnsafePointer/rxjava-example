@@ -2,6 +2,8 @@ package com.ruenzuo.weatherapp.activities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Window;
 
 import com.ruenzuo.weatherapp.R;
 import com.ruenzuo.weatherapp.managers.WeatherAPIManager;
@@ -22,7 +24,7 @@ public class CitiesActivity extends ActionBarActivity implements Observer<ArrayL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setProgressBarIndeterminateVisibility(true);
         subscription = AndroidObservable.fromActivity(this, WeatherAPIManager.INSTANCE.getCities())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -46,6 +48,6 @@ public class CitiesActivity extends ActionBarActivity implements Observer<ArrayL
 
     @Override
     public void onNext(ArrayList<City> cities) {
-
+        Log.d("CitiesActivity", cities.toString());
     }
 }
