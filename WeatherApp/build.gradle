@@ -20,5 +20,7 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:19.0.1'
+    compile 'com.netflix.rxjava:rxjava-android:0.17.0'
+    compile 'com.squareup.retrofit:retrofit:1.4.1'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
