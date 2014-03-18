@@ -1,7 +1,6 @@
-<uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ptrLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -11,9 +10,9 @@
     tools:context="com.ruenzuo.weatherapp.activities.CountriesActivity">
 
     <fragment
-        android:id="@+id/citiesListFragment"
+        android:id="@+id/countriesListFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         class="com.ruenzuo.weatherapp.fragments.CountriesListFragment" />
 
-</uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout>
+</RelativeLayout>
